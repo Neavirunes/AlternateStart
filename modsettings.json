@@ -1,0 +1,77 @@
+{
+    "Version": "0.1",
+    "Sections": [
+        {
+            "Name": "General",
+            "Description": "General Settings for Alternate Start",
+            "IsAdvanced": false,
+            "Keys": [
+                {
+                    "Options": [
+                        "Alchemist",
+                        "Armorer",
+                        "Bard",
+                        "Beggar",
+                        "Guard",
+                        "Jeweller",
+                        "Knight",
+                        "Librarian",
+                        "Mercenary",
+                        "Merchant",
+                        "Patron",
+                        "Pawner",
+                        "Scholar",
+                        "Tailor",
+                        "Thief",
+                        "Wanderer",
+                        "Warlock/Witch",
+                        "Sorceress/Wizard",
+                        "Weaponsmith",
+                        "Undecided"
+                    ],
+                    "Value": 0,
+                    "Name": "Occupation",
+                    "Description": "Pick An Occupation",
+                    "$version": "v1",
+                    "$type": "DaggerfallWorkshop.Game.Utility.ModSupport.ModSettings.MultipleChoiceKey"
+                },
+                {
+                    "Value": "Host of the Horn",
+                    "Name": "KnightOrderName",
+                    "Description": "Knightly Or Religious Order You're A Member Of",
+                    "$version": "v1",
+                    "$type": "DaggerfallWorkshop.Game.Utility.ModSupport.ModSettings.TextKey"
+                },
+                {
+                    "Min": 0,
+                    "Max": 100,
+                    "Value": 0,
+                    "Name": "ExperienceYears",
+                    "Description": "Amount of Years In Occupation",
+                    "$version": "v1",
+                    "$type": "DaggerfallWorkshop.Game.Utility.ModSupport.ModSettings.SliderIntKey"
+                },
+                {
+                    "Options": [
+                        "None",
+                        "Vampire",
+                        "Werewolf"
+                    ],
+                    "Value": 0,
+                    "Name": "VampWolf",
+                    "Description": "Toggle Vampirism Or Lycanthropy",
+                    "$version": "v1",
+                    "$type": "DaggerfallWorkshop.Game.Utility.ModSupport.ModSettings.MultipleChoiceKey"
+                },
+                {
+                    "Value": false,
+                    "Name": "TeleportMe",
+                    "Description": "Teleports You To A Location On New Game",
+                    "$version": "v1",
+                    "$type": "DaggerfallWorkshop.Game.Utility.ModSupport.ModSettings.ToggleKey"
+                }
+            ],
+            "$version": "v1"
+        }
+    ]
+}
