@@ -89,7 +89,6 @@ namespace AlternateStart
 		static int MinuteDayI;
 		static int NewTime;
 		static int NPCCheck;
-		static int Occupation;
 		static int RandoA;
 		static int RandoI;
 		static int RandomCheck;
@@ -133,6 +132,7 @@ namespace AlternateStart
 		// ---------------------------------------------------------------------
 
 		// - Save Variables ----------------------------------------------------
+		public static int Occupation;
 		static float DrumSkill;
 		static float LuteSkill;
 		static float RecorderSkill;
@@ -140,7 +140,7 @@ namespace AlternateStart
 		public static int LawbookUsed;
 		static int SpawnCount;
 		static int HasItems;
-		static int ShelfExists;
+		public static int ShelfExists;
 		static int ShelfValue;
 		static string ShelfName;
 		static List<DaggerfallUnityItem> Shelf;
@@ -1309,7 +1309,6 @@ namespace AlternateStart
 							Message1 = "Twangs from your lute flow out " +
 							"through the city, past people walking by.";
 
-
 							if (MinuteDayI < 660)
 							{
 								MinuteDayF = (float)MinuteDayI / 660f;
@@ -1956,6 +1955,24 @@ namespace AlternateStart
 							if (RandoI > 0)
 							{
 								BookCount = (Shelf.Count / RandoI) + 1;
+								for (Index = 0; Index < Shelf.Count; Index += BookCount)
+								{
+									Book = Shelf[Index];
+									BookData = Data[Index];
+									ShelfValue += BookData.value1;
+									Shelf.RemoveAt(Index);
+									Data.RemoveAt(Index);
+								}
+							}
+
+							RandoI = Fortuna.Next(0, Shelf.Count);
+							FLuck = 1f - (float)Player.Stats.LiveLuck / 100f;
+							RandoF = (float)RandoI * FLuck;
+							RandoI = (int)RandoF;
+
+							if (RandoI > 0)
+							{
+								BookCount = Shelf.Count / RandoI + 1;
 								for (Index = 0; Index < Shelf.Count; Index += BookCount)
 								{
 									Shelf.RemoveAt(Index);
@@ -2630,6 +2647,7 @@ namespace AlternateStart
 		{
 			return new AlternateData
 			{
+				occupation = Occupation,
 				drumSkill = DrumSkill,
 				luteSkill = LuteSkill,
 				recorderSkill = RecorderSkill,
@@ -2654,6 +2672,7 @@ namespace AlternateStart
 		{
 			return new AlternateData
 			{
+				occupation = Occupation,
 				drumSkill = DrumSkill,
 				luteSkill = LuteSkill,
 				recorderSkill = RecorderSkill,
@@ -2678,6 +2697,7 @@ namespace AlternateStart
 		{
 			var myModSaveData = (AlternateData)saveData;
 
+			Occupation = myModSaveData.occupation;
 			DrumSkill = myModSaveData.drumSkill;
 			LuteSkill = myModSaveData.luteSkill;
 			RecorderSkill = myModSaveData.recorderSkill;
@@ -2812,6 +2832,11 @@ namespace AlternateStart
 			AlternateStartMod.TemplateIndex = 42445;
 			AlternateStartMod.TextureIndex = 42447;
 
+			if (AlternateStartMod.ShelfExists == 0)
+			{
+				AlternateStartMod.Occupation = 0;
+			}
+
 			collection.RemoveItem(this);
 			AlternateStartMod.ShelfUsed = 1;
 			return true;
@@ -2834,6 +2859,11 @@ namespace AlternateStart
 		{
 			AlternateStartMod.TemplateIndex = 42446;
 			AlternateStartMod.TextureIndex = 42448;
+
+			if (AlternateStartMod.ShelfExists == 0)
+			{
+				AlternateStartMod.Occupation = 0;
+			}
 
 			collection.RemoveItem(this);
 			AlternateStartMod.ShelfUsed = 1;
@@ -2858,6 +2888,11 @@ namespace AlternateStart
 			AlternateStartMod.TemplateIndex = 42447;
 			AlternateStartMod.TextureIndex = 42449;
 
+			if (AlternateStartMod.ShelfExists == 0)
+			{
+				AlternateStartMod.Occupation = 0;
+			}
+
 			collection.RemoveItem(this);
 			AlternateStartMod.ShelfUsed = 1;
 			return true;
@@ -2880,6 +2915,11 @@ namespace AlternateStart
 		{
 			AlternateStartMod.TemplateIndex = 42448;
 			AlternateStartMod.TextureIndex = 42450;
+
+			if (AlternateStartMod.ShelfExists == 0)
+			{
+				AlternateStartMod.Occupation = 0;
+			}
 
 			collection.RemoveItem(this);
 			AlternateStartMod.ShelfUsed = 1;
@@ -2904,6 +2944,11 @@ namespace AlternateStart
 			AlternateStartMod.TemplateIndex = 42449;
 			AlternateStartMod.TextureIndex = 42451;
 
+			if (AlternateStartMod.ShelfExists == 0)
+			{
+				AlternateStartMod.Occupation = 0;
+			}
+
 			collection.RemoveItem(this);
 			AlternateStartMod.ShelfUsed = 1;
 			return true;
@@ -2926,6 +2971,11 @@ namespace AlternateStart
 		{
 			AlternateStartMod.TemplateIndex = 42450;
 			AlternateStartMod.TextureIndex = 42452;
+
+			if (AlternateStartMod.ShelfExists == 0)
+			{
+				AlternateStartMod.Occupation = 0;
+			}
 
 			collection.RemoveItem(this);
 			AlternateStartMod.ShelfUsed = 1;
@@ -2950,6 +3000,11 @@ namespace AlternateStart
 			AlternateStartMod.TemplateIndex = 42451;
 			AlternateStartMod.TextureIndex = 42453;
 
+			if (AlternateStartMod.ShelfExists == 0)
+			{
+				AlternateStartMod.Occupation = 0;
+			}
+
 			collection.RemoveItem(this);
 			AlternateStartMod.ShelfUsed = 1;
 			return true;
@@ -2972,6 +3027,11 @@ namespace AlternateStart
 		{
 			AlternateStartMod.TemplateIndex = 42452;
 			AlternateStartMod.TextureIndex = 42454;
+
+			if (AlternateStartMod.ShelfExists == 0)
+			{
+				AlternateStartMod.Occupation = 0;
+			}
 
 			collection.RemoveItem(this);
 			AlternateStartMod.ShelfUsed = 1;
@@ -2996,6 +3056,11 @@ namespace AlternateStart
 			AlternateStartMod.TemplateIndex = 42453;
 			AlternateStartMod.TextureIndex = 42455;
 
+			if (AlternateStartMod.ShelfExists == 0)
+			{
+				AlternateStartMod.Occupation = 0;
+			}
+
 			collection.RemoveItem(this);
 			AlternateStartMod.ShelfUsed = 1;
 			return true;
@@ -3014,10 +3079,10 @@ namespace AlternateStart
 	{
 		public StaffWeapon() : base(ItemGroups.Weapons, 42454){}
 
-        public override int InventoryTextureArchive
-        {
-            get
-            {
+		public override int InventoryTextureArchive
+		{
+			get
+			{
 				PlayerEntity Player = GameManager.Instance.PlayerEntity;
 				Genders AGender = Player.Gender;
 				if (AGender == Genders.Female)
@@ -3029,7 +3094,7 @@ namespace AlternateStart
 					return 42457;
 				}
 			}
-        }
+		}
 
 		public override int GroupIndex
 		{
@@ -3083,6 +3148,7 @@ namespace AlternateStart
 	[FullSerializer.fsObject("v1")]
 	public class AlternateData
 	{
+		public int occupation { get; set; }
 		public float drumSkill { get; set; }
 		public float luteSkill { get; set; }
 		public float recorderSkill { get; set; }
